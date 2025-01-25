@@ -5,7 +5,6 @@ import it.witaliden.naviguideapi.model.Waypoint;
 import it.witaliden.naviguideapi.repository.RouteRepository;
 import it.witaliden.naviguideapi.repository.WaypointRepository;
 import it.witaliden.naviguideapi.rest.dto.RouteDTO;
-import it.witaliden.naviguideapi.rest.dto.RouteDetailsDTO;
 import it.witaliden.naviguideapi.rest.dto.WaypointDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
@@ -42,10 +41,10 @@ public class RouteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RouteDetailsDTO> getRouteDetails(@PathVariable Long id) {
+    public ResponseEntity<RouteDTO> getRouteDetails(@PathVariable Long id) {
         Optional<Route> route = routeRepository.findById(id);
         if (route.isPresent()) {
-            RouteDetailsDTO routeDTO = modelMapper.map(route.get(), RouteDetailsDTO.class);
+            RouteDTO routeDTO = modelMapper.map(route.get(), RouteDTO.class);
             return ResponseEntity.ok(routeDTO);
         }
         return ResponseEntity.notFound().build();
@@ -53,7 +52,7 @@ public class RouteController {
 
     @GetMapping("/{id}/waypoints")
     public ResponseEntity<List<WaypointDTO>> getRouteWaypoints(@PathVariable Long id) {
-        List<Waypoint> waypoints = waypointRepository.findByRouteIdOrderByOrderNumber(id);
+        List<Waypoint> waypoints = waypointRepository.findByRouteIdOrderByRoute(id);
         if (!waypoints.isEmpty()) {
             List<WaypointDTO> waypointDTOs = waypoints.stream()
                     .map(waypoint -> modelMapper.map(waypoint, WaypointDTO.class))

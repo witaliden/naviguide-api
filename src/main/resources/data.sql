@@ -1,14 +1,13 @@
-INSERT INTO route (name, description, start_lat, start_lng, end_lat, end_lng, estimated_time, distance)
+INSERT INTO route (id, name, description)
 VALUES
-    ('Trasa górska', 'Malownicza trasa przez góry', 49.2982, 19.9545, 49.2320, 19.9287, 180, 12.5),
-    ('Trasa miejska', 'Zwiedzanie zabytków miasta', 50.0647, 19.9450, 50.0617, 19.9376, 120, 5.0),
-    ('Trasa leśna', 'Spacer po lesie', 50.1197, 19.8516, 50.1167, 19.8983, 90, 3.5);
+    (1,'Trasa miejska', 'Zwiedzanie zabytków miasta'),
+    (2,'Trasa górska', 'Malownicza trasa przez góry'),
+    (3,'Trasa leśna', 'Spacer po lesie'),
+    (4,'Trasa przez park', 'Spacer parkiem');
 
-INSERT INTO waypoint (name, description, latitude, longitude, order_number, route_id)
+INSERT INTO waypoint (id, name, description, lat, lng, route_id)
 VALUES
-    ('Punkt widokowy', 'Piękny widok na góry', 49.2800, 19.9400, 1, 1),
-    ('Wodospad', 'Malowniczy wodospad górski', 49.2700, 19.9350, 2, 1),
-    ('Rynek', 'Zabytkowy rynek miasta', 50.0617, 19.9373, 1, 2),
-    ('Zamek', 'Średniowieczny zamek', 50.0544, 19.9360, 2, 2),
-    ('Polana', 'Leśna polana z ławkami', 50.1180, 19.8600, 1, 3),
-    ('Jezioro', 'Malownicze leśne jezioro', 50.1170, 19.8700, 2, 3);
+    (1,'Rynek', 'Zabytkowy rynek miasta', 59.913868, 10.752245, 1),
+    (2,'Zamek', 'Zabytkowy zamek królewski', 59.913079, 10.734346, 1),
+    (3,'Wejście główne', 'Przy pomniku', 59.926444, 10.702843, 4),
+    (4,'Fontana', 'opis fontany', 59.924936, 10.708058, 4);

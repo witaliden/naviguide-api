@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface WaypointRepository extends JpaRepository<Waypoint, Long> {
-    List<Waypoint> findByRouteIdOrderByOrderNumber(Long id);
+    List<Waypoint> findByRouteIdOrderByRoute(Long id);
 }
